@@ -13,8 +13,8 @@
       }
     ],
     "github": {
-    "repo": "MoisesD2001/MonitoreoD20242WEB",
-    "branch": "master" // or specify your desired branch
+      "repo": "MoisesD2001/MonitoreoD20242WEB",
+      "branch": "master"
     }
   }
 }

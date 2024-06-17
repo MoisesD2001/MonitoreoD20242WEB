@@ -11,6 +11,13 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ]
+    ],
+    "hosting": {
+    // ... other hosting settings
+    "github": {
+    "repo": "MoisesD2001/MonitoreoD20242WEB",
+    "branch": "master" // or specify your desired branch
+  }
+}
   }
 }

@@ -11,10 +11,6 @@
         "source": "**",
         "destination": "/index.html"
       }
-    ],
-    "github": {
-      "repo": "MoisesD2001/MonitoreoD20242WEB",
-      "branch": "master"
-    }
+    ]
   }
 }

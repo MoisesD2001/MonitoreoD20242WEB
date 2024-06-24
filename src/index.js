@@ -21,7 +21,7 @@ const A = ref(db, "variables/a")
 
 onValue(A, (sanpshot) => {
     console.log(sanpshot.val());
-    const out2 = document.getElementById("output1");
+    const out1 = document.getElementById("output1");
     var num_a = sanpshot.val(); 
     out1.innerHTML = num_a; 
   });  

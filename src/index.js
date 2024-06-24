@@ -14,6 +14,10 @@ const firebaseConfig = {
   appId: "1:395288746126:web:8834ddd36b8fea9f6911df"
 };
 
+import {
+  getDatabase, ref , set, update as dataUpdate , remove, get, onValue
+} from 'firebase/database'
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 

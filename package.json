@@ -1,7 +1,6 @@
 {
-  "name": "PD20242",
+  "name": "pd20242",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "build": "webpack"
@@ -16,5 +15,6 @@
   "dependencies": {
     "chart.js": "^4.4.0",
     "firebase": "^10.3.0"
-  }
+  },
+  "description": ""
 }

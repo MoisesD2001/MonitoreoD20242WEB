@@ -18,9 +18,11 @@ import {
   getDatabase, ref , set, update as dataUpdate , remove, get, onValue
 } from 'firebase/database'
 
+import {uploadBytes, getStorage, ref as stoRef, uploadBytesResumable, getDownloadURL ,child} from "firebase/storage";
+
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+initializeApp(firebaseConfig)
+const db = getDatabase()
 
 const A = ref(db, "variables/a")
 

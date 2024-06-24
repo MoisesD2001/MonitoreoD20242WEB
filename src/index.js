@@ -20,6 +20,7 @@ import {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
 const A = ref(db, "variables/a")
 

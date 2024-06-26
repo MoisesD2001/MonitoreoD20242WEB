@@ -8,12 +8,16 @@
 <meta name="keywords" content="html tutorial template">
 </head>
   <body>
-  Content goes here POR FA.
+  <button class="tablink" onclick="openPage('Home', this, 'rgb(149, 195, 221)')" id="defaultOpen">Home</button>
+  <button class="tablink" onclick="openPage('Updates', this, 'rgb(91, 121, 138)')">Updates</button>
+  <div id = "Home" class = "tabcontent1">  
     <div class="box">
         <h2 id="golos">FC</h2>
         <p class = "output" id = "output1"></p>
     </div>
+  </div>
 
+  <div id="Updates" class="tabcontent2">
     <div id="Updates" class="tabcontent2">
       <h3 id="golos" style="text-align: center;">Actualizaciones</h3>
       <div style="text-align: center;">
@@ -31,7 +35,7 @@
         <input id = 'firmware_select_ESP32' type = 'text' placeholder="Ingresar versión deseada...">
       </div>
     </div>
-
+  </div>  
   </body>
 
 <script src="bundle.js"></script>

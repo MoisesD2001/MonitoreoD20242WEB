@@ -1,18 +1,60 @@
 <!doctype html>
 <html>
 <head>
+    <link rel="stylesheet"  href="styles.css">
     <link rel="stylesheet" href='https://fonts.googleapis.com/css?family=Golos Text'>
 <title>Our Funky HTML Page</title>
 <meta name="description" content="Our first page">
 <meta name="keywords" content="html tutorial template">
 </head>
+  <body>
+  Content goes here POR FA.
+    <div class="box">
+        <h2 id="golos">FC</h2>
+        <p class = "output" id = "output1"></p>
+    </div>
+
+    <div id="Updates" class="tabcontent2">
+      <h3 id="golos" style="text-align: center;">Actualizaciones</h3>
+      <div style="text-align: center;">
+        <label for="firmware">Ingresar .bin:</label>
+        <input id = 'firmware' type = 'file'>
+      </div>
+      <div style="text-align: center;">
+        <label for = "firmware">Las últimas tres versiones subidas son:</label>
+        <p class = "output" id = "LastVer1"></p>
+        <p class = "output" id = "LastVer2"></p>
+        <p class = "output" id = "LastVer3"></p>
+      </div>
+      <div style="text-align: center;">
+        <label for="firmware_select_ESP32">Versión ESP32 deseada:</label>
+        <input id = 'firmware_select_ESP32' type = 'text' placeholder="Ingresar versión deseada...">
+      </div>
+    </div>
+
+  </body>
+
 <script src="bundle.js"></script>
-<body>
-Content goes here POR FA.
-<div class="box">
-    <h2 id="golos">FC</h2>
-    <i class="fa-solid fa-heart-pulse icon"></i>
-    <p class = "output" id = "output1"></p>
-  </div>
-</body>
+<script>
+  function openPage(pageName,elmnt,color) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent1");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tabcontent = document.getElementsByClassName("tabcontent2");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablink");
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].style.backgroundColor = "";
+    }
+    document.getElementById(pageName).style.display = "block";
+    elmnt.style.backgroundColor = color;
+  }
+  
+  // Get the element with id="defaultOpen" and click on it
+  document.getElementById("defaultOpen").click();
+  </script>
 </html>

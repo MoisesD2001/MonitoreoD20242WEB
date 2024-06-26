@@ -25,6 +25,7 @@ initializeApp(firebaseConfig)
 const db = getDatabase()
 
 const A = ref(db, "variables/a")
+const firmRef = ref(db, "firmware")
 
 onValue(A, (sanpshot) => {
     console.log(sanpshot.val());
@@ -32,3 +33,98 @@ onValue(A, (sanpshot) => {
     var num_a = sanpshot.val(); 
     out1.innerHTML = num_a; 
   });  
+
+  $(document).ready(function(){
+    $("#firmware").change(function () {
+        var file = $('#firmware')[0].files[0];    
+        readFile(file);
+    });
+  });
+  
+  $(document).ready(function(){
+    $("#firmware_select_ESP32").change(function () {
+      var ver = document.getElementById('firmware_select_ESP32').value;    
+      uploadVer_ESP32(ver);
+    });
+  });
+  
+  $(document).ready(function(){
+    $("#firmware_select_ES32_CAM").change(function () {
+      var ver = document.getElementById('firmware_select_ES32_CAM').value;    
+      uploadVer_ESP32_CAM(ver);
+      var field = document.getElementById('firmware_select_ESP32_CAM');
+      field.value = field.defaultValue;
+    });
+  });
+  
+  // Read the file chosen by the user.
+  function readFile(file) {
+    // Open the file and start reading it.
+    var reader = new FileReader();
+    reader.onloadend = function() {      
+      readMetadata(file, reader.result);
+    }
+    reader.readAsArrayBuffer(file);
+  }
+  // Extract the version string from the given file data.
+  function getFirmwareVersion(data) {
+    var enc = new TextDecoder("utf-8");
+    var s = enc.decode(data);
+    console.log(s);
+    var re = new RegExp("__MaGiC__ [^_]+__");
+    var result = re.exec(s);
+    if (result == null) {
+      return null;
+    }
+    return result[0];
+  }
+  // Called when we're done reading the file data.
+  function readMetadata(file, data) {
+    var version = getFirmwareVersion(data);
+    if (version == null) {
+      console.log("Could not extract magic string from binary.");
+      return;
+    }
+    // Upload firmware binary to Firebase Cloud Storage.
+    // We use the version string as the filename, since
+    // it's assumed to be unique.
+    const storageRef = stoRef(storage,"FIRMWARE/" +  version);
+    uploadBytes(storageRef,file).then((snapshot)=> {
+      // Upload completed. Get the URL. 
+        getDownloadURL(storageRef).then(function(url) {
+        saveMetadata(file.name, version, url);
+      });
+    });
+  }
+  // Save the metadata to Realtime Database.
+  function saveMetadata(filename, version, url) {
+    var dbRef = ref(db);
+    var metadata = {
+      // This bit of magic causes Firebase to write the
+      // server timestamp when the data is written to the
+      // database record.
+      dateUploaded: firebase.database.ServerValue.TIMESTAMP,
+      filename: filename,
+      url: url,
+    };
+  
+    const updates = {};
+    updates['/firmware/' + version] = metadata;
+    updates['/config/ESP32/version'] = version;
+  
+    dataUpdate(dbRef,updates);
+  }
+  
+  function uploadVer_ESP32(ver){
+    var dbRef = ref(db);
+    var verData = {
+      // This bit of magic causes Firebase to write the
+      // server timestamp when the data is written to the
+      // database record.
+      version: ver,
+    };
+    const updates = {};
+    updates['/config/ESP32/'] = verData;
+  
+    dataUpdate(dbRef,updates);
+  }

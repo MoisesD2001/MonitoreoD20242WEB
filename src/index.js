@@ -23,6 +23,7 @@ import {uploadBytes, getStorage, ref as stoRef, uploadBytesResumable, getDownloa
 // Initialize Firebase
 initializeApp(firebaseConfig)
 const db = getDatabase()
+const storage = getStorage();
 
 const A = ref(db, "variables/a")
 const firmRef = ref(db, "firmware")

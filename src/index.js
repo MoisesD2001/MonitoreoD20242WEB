@@ -52,12 +52,12 @@ onValue(lo_GPS, (sanpshot) => {
   out3.innerHTML = num_lo; 
 });  
 
-/* onValue(d_London_GPS, (sanpshot) => {
+onValue(d_London_GPS, (sanpshot) => {
   console.log(sanpshot.val());
   const out4 = document.getElementById("output4");
   var num_d = sanpshot.val(); 
   out4.innerHTML = num_d; 
-});   */
+});   
 
 $(document).ready(function(){
   $("#firmware").change(function () {

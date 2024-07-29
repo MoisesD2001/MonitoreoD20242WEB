@@ -31,3 +31,13 @@ display: none;
 padding: 200px 20px;
 background-color: rgb(91, 121, 138);
 }
+
+.box {
+  width: 20%;
+  background-color: #555;
+  border-radius: 5px 15px;
+  float: left;
+  text-align: center;
+  margin: 30px;
+  transition-duration: 0.4s;
+}

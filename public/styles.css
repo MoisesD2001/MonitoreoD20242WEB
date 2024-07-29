@@ -41,3 +41,13 @@ background-color: rgb(91, 121, 138);
   margin: 30px;
   transition-duration: 0.4s;
 }
+
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: auto;
+  margin-left: auto;
+}

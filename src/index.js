@@ -25,39 +25,51 @@ initializeApp(firebaseConfig)
 const db = getDatabase()
 const storage = getStorage();
 
-const A = ref(db, "variables/a")
-const la_GPS = ref(db, "data/latitude")
-const lo_GPS = ref(db, "data/longitude")
-const d_London_GPS = ref(db, "data/distance to London")
-const firmRef = ref(db, "firmware")
 
-onValue(A, (sanpshot) => {
-    console.log(sanpshot.val());
-    const out1 = document.getElementById("output1");
-    var num_a = sanpshot.val(); 
-    out1.innerHTML = num_a; 
-});  
+const la_GPS = ref(db, "data/Y")
+const lo_GPS = ref(db, "data/X")
+const T = ref(db, "data/T")
+const H = ref(db, "data/H")
+const C = ref(db, "data/C")
+
+const firmRef = ref(db, "firmware")
 
 onValue(la_GPS, (sanpshot) => {
   console.log(sanpshot.val());
-  const out2 = document.getElementById("output2");
+  const out1 = document.getElementById("output1");
   var num_la = sanpshot.val(); 
-  out2.innerHTML = num_la; 
+  out1.innerHTML = num_la; 
 });  
 
 onValue(lo_GPS, (sanpshot) => {
+  console.log(sanpshot.val());
+  const out2 = document.getElementById("output2");
+  var num_lo = sanpshot.val(); 
+  out2.innerHTML = num_lo; 
+});  
+
+onValue(T, (sanpshot) => {
   console.log(sanpshot.val());
   const out3 = document.getElementById("output3");
   var num_lo = sanpshot.val(); 
   out3.innerHTML = num_lo; 
 });  
 
-onValue(d_London_GPS, (sanpshot) => {
+onValue(H, (sanpshot) => {
   console.log(sanpshot.val());
   const out4 = document.getElementById("output4");
-  var num_d = sanpshot.val(); 
-  out4.innerHTML = num_d; 
-});   
+  var num_lo = sanpshot.val(); 
+  out4.innerHTML = num_lo; 
+});  
+
+onValue(C, (sanpshot) => {
+  console.log(sanpshot.val());
+  const out5 = document.getElementById("output5");
+  var num_lo = sanpshot.val(); 
+  out5.innerHTML = num_lo; 
+});  
+
+
 
 $(document).ready(function(){
   $("#firmware").change(function () {
